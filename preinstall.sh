@@ -142,6 +142,17 @@ echo "                      ✅ OK ✅" &&
 sleep 0.5 &&
 
 echo ""
+echo "               $(tput setaf 0)$(tput setab 9) Installation de ACPI $(tput sgr0)" &&
+echo ""
+sleep 1 &&
+
+sudo apt install acpi -y
+
+echo ""
+echo "                      ✅ OK ✅" &&
+sleep 0.5 &&
+
+echo ""
 echo "               $(tput setaf 0)$(tput setab 9) Installation de S-Tui $(tput sgr0)" &&
 echo ""
 sleep 1 &&

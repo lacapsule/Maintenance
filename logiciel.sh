@@ -1,6 +1,6 @@
 #!/bin/bash
 
-printf "\e[8;19;50t" 
+printf "\e[8;20;50t" 
       E='echo -e';e='echo -en';trap "R;exit" 2
     ESC=$( $e "\e")
    TPUT(){ $e "\e[${1};${2}H";}
@@ -18,7 +18,7 @@ printf "\e[8;19;50t"
            WRITE;MARK;TPUT 1 1
            $E "                  MENU DU SCRIPT                  ";UNMARK;}
            i=0; CLEAR; CIVIS;NULL=/dev/null
-   FOOT(){ MARK;TPUT 18 1
+   FOOT(){ MARK;TPUT 19 1
            printf "               CREE PAR LA CAPSULE          💦    ";UNMARK;}
   ARROW(){ read -s -n3 key 2>/dev/null >&2
            if [[ $key = $ESC[A ]];then echo up;fi
@@ -28,16 +28,17 @@ printf "\e[8;19;50t"
      M2(){ TPUT  5 3; $e "                Relevé $(tput setab 9) RAM                   $(tput setab 0)";}
      M3(){ TPUT  6 3; $e "                Relevé $(tput setab 9) CPU                   $(tput setab 0)";}
      M4(){ TPUT  7 3; $e "                Relevé $(tput setab 9) disque                $(tput setab 0)";}
-     M5(){ TPUT  8 3; $e "                Relevé $(tput setab 9) network               $(tput setab 0)";}
-     M6(){ TPUT  9 3; $e "$(tput setab 9)                 Santé $(tput setab 0) disque                ";}
-     M7(){ TPUT  10 3; $e "$(tput setab 9)                 infos $(tput setab 0) disque                ";}
-     M8(){ TPUT  11 3; $e "$(tput setab 4)$(tput setaf 15)             Info carte graphique             $(tput setaf 15)$(tput setab 0)";}
-     M9(){ TPUT  12 3; $e "$(tput setab 15)$(tput setaf 1)              Stress test du CPU              $(tput setab 0)";}
-     M10(){ TPUT  13 3; $e "$(tput setab 17)$(tput setaf 15)          Lancer Phoronix Test Suite          $(tput setaf 15)$(tput setab 0)";}
-     M11(){ TPUT  14 3; $e "$(tput setab 9)$(tput setaf 15)               MAJ du système                 $(tput setaf 15)$(tput setab 0)";}
-     M12(){ TPUT  15 3; $e "$(tput setab 11)$(tput setaf 0)            Ré/Installer les softs            $(tput setaf 15)$(tput setab 0)";}
-     M13(){ TPUT  16 3; $e "$(tput setab 9)              Quitter le script               $(tput setab 0)";}
-      LM=13
+     M5(){ TPUT  8 3; $e "                Relevé $(tput setab 9) batterie              $(tput setab 0)";}
+     M6(){ TPUT  9 3; $e "                Relevé $(tput setab 9) network               $(tput setab 0)";}
+     M7(){ TPUT  10 3; $e "$(tput setab 9)                 Santé $(tput setab 0) disque                ";}
+     M8(){ TPUT  11 3; $e "$(tput setab 9)                 infos $(tput setab 0) disque                ";}
+     M9(){ TPUT  12 3; $e "$(tput setab 4)$(tput setaf 15)             Info carte graphique             $(tput setaf 15)$(tput setab 0)";}
+     M10(){ TPUT  13 3; $e "$(tput setab 15)$(tput setaf 1)              Stress test du CPU              $(tput setab 0)";}
+     M11(){ TPUT  14 3; $e "$(tput setab 17)$(tput setaf 15)          Lancer Phoronix Test Suite          $(tput setaf 15)$(tput setab 0)";}
+     M12(){ TPUT  15 3; $e "$(tput setab 9)$(tput setaf 15)               MAJ du système                 $(tput setaf 15)$(tput setab 0)";}
+     M13(){ TPUT  16 3; $e "$(tput setab 11)$(tput setaf 0)            Ré/Installer les softs            $(tput setaf 15)$(tput setab 0)";}
+     M14(){ TPUT  17 3; $e "$(tput setab 9)              Quitter le script               $(tput setab 0)";}
+      LM=14
    MENU(){ for each in $(seq 0 $LM);do M${each};done;}
     POS(){ if [[ $cur == up ]];then ((i--));fi
            if [[ $cur == dn ]];then ((i++));fi
@@ -58,14 +59,15 @@ REFRESH(){ after=$((i+1)); before=$((i-1))
         2) S=M2;SC;if [[ $cur == "" ]];then R;$e "\n$(sudo inxi -m)\n";ES;fi;;
         3) S=M3;SC;if [[ $cur == "" ]];then R;$e "\n$(sudo inxi -C)\n";ES;fi;;
         4) S=M4;SC;if [[ $cur == "" ]];then R;$e "\n$(sudo inxi -D)\n";ES;fi;;
-        5) S=M5;SC;if [[ $cur == "" ]];then R;$e "\n$(sudo inxi -N)\n";ES;fi;;
-        6) S=M6;SC;if [[ $cur == "" ]];then R;$e "\n$(sudo skdump --overall /dev/sdb)\n";ES;fi;;
-        7) S=M7;SC;if [[ $cur == "" ]];then R;$e "\n$(sudo smartctl -i /dev/sdb)\n";ES;fi;;
-        8) S=M8;SC;if [[ $cur == "" ]];then R;$e "\n$(sudo inxi -G)\n";ES;fi;;
-        9) S=M9;SC;if [[ $cur == "" ]];then R;$e "\n$(cd / && cd ~/maintenance && gnome-terminal -e  "sudo s-tui")\n";ES;fi;;
-        10) S=M10;SC;if [[ $cur == "" ]];then R;$e "\n$(cd / && cd /usr/share/applications/ && gtk-launch phoronix-test-suite.desktop)\n";ES;fi;;
-        11) S=M11;SC;if [[ $cur == "" ]];then R;$e "\n$(cd / && cd ~/maintenance && gnome-terminal -e  "./maj.sh")\n";ES;fi;; 
-        12) S=M12;SC;if [[ $cur == "" ]];then R;$e "\n$(cd / && cd ~/maintenance && gnome-terminal -e  "./preinstall.sh")\n";ES;fi;;   
-        13) S=M13;SC;if [[ $cur == "" ]];then R;exit 0;fi;;
+        5) S=M5;SC;if [[ $cur == "" ]];then R;$e "\n$(sudo acpi -i)\n";ES;fi;;
+        6) S=M6;SC;if [[ $cur == "" ]];then R;$e "\n$(sudo inxi -N)\n";ES;fi;;
+        7) S=M7;SC;if [[ $cur == "" ]];then R;$e "\n$(sudo skdump --overall /dev/sdb)\n";ES;fi;;
+        8) S=M8;SC;if [[ $cur == "" ]];then R;$e "\n$(sudo smartctl -i /dev/sdb)\n";ES;fi;;
+        9) S=M9;SC;if [[ $cur == "" ]];then R;$e "\n$(sudo inxi -G)\n";ES;fi;;
+        10) S=M10;SC;if [[ $cur == "" ]];then R;$e "\n$(cd / && cd ~/maintenance && gnome-terminal -e  "sudo s-tui")\n";ES;fi;;
+        11) S=M11;SC;if [[ $cur == "" ]];then R;$e "\n$(cd / && cd /usr/share/applications/ && gtk-launch phoronix-test-suite.desktop)\n";ES;fi;;
+        12) S=M12;SC;if [[ $cur == "" ]];then R;$e "\n$(cd / && cd ~/maintenance && gnome-terminal -e  "./maj.sh")\n";ES;fi;; 
+        13) S=M13;SC;if [[ $cur == "" ]];then R;$e "\n$(cd / && cd ~/maintenance && gnome-terminal -e  "./preinstall.sh")\n";ES;fi;;   
+        14) S=M14;SC;if [[ $cur == "" ]];then R;exit 0;fi;;
  esac;POS;done
 
