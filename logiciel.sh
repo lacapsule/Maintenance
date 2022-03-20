@@ -15,28 +15,28 @@ printf "\e[8;19;50t"
            for each in $(seq 1 18);do
            $E "x                                                x"
            done
-           WRITE;MARK;TPUT 1 5
-           $E "              MENU DU SCRIPT              ";UNMARK;}
+           WRITE;MARK;TPUT 1 1
+           $E "                  MENU DU SCRIPT                  ";UNMARK;}
            i=0; CLEAR; CIVIS;NULL=/dev/null
-   FOOT(){ MARK;TPUT 18 5
-           printf "            CREE PAR LA CAPSULE        💦 ";UNMARK;}
+   FOOT(){ MARK;TPUT 18 1
+           printf "               CREE PAR LA CAPSULE          💦    ";UNMARK;}
   ARROW(){ read -s -n3 key 2>/dev/null >&2
            if [[ $key = $ESC[A ]];then echo up;fi
            if [[ $key = $ESC[B ]];then echo dn;fi;}
-     M0(){ TPUT  3 10; $e "$(tput setab 1)         Mode graphique         $(tput setab 0)";}
-     M1(){ TPUT  4 10; $e "$(tput setab 11)$(tput setaf 0)        Test du moniteur        $(tput setaf 15)$(tput setab 0)";}
-     M2(){ TPUT  5 10; $e "          Relevé$(tput setab 9) RAM            $(tput setab 0)";}
-     M3(){ TPUT  6 10; $e "          Relevé$(tput setab 9) CPU            $(tput setab 0)";}
-     M4(){ TPUT  7 10; $e "          Relevé$(tput setab 9) disque         $(tput setab 0)";}
-     M5(){ TPUT  8 10; $e "          Relevé$(tput setab 9) network        $(tput setab 0)";}
-     M6(){ TPUT  9 10; $e "$(tput setab 9)          Santé $(tput setab 0) disque         ";}
-     M7(){ TPUT  10 10; $e "$(tput setab 9)          infos $(tput setab 0) disque         ";}
-     M8(){ TPUT  11 10; $e "$(tput setab 4)$(tput setaf 15)       Info carte graphique     $(tput setaf 15)$(tput setab 0)";}
-     M9(){ TPUT  12 10; $e "$(tput setab 15)$(tput setaf 1)        Stress test du CPU      $(tput setab 0)";}
-     M10(){ TPUT  13 10; $e "$(tput setab 17)$(tput setaf 15)   Lancer Phoronix Test Suite   $(tput setaf 15)$(tput setab 0)";}
-     M11(){ TPUT  14 10; $e "$(tput setab 9)         MAJ du système         $(tput setab 0)";}
-     M12(){ TPUT  15 10; $e "$(tput setab 11)$(tput setaf 0)     Ré/Installer les softs     $(tput setaf 15)$(tput setab 0)";}
-     M13(){ TPUT  16 10; $e "$(tput setab 9)       Quitter le script        $(tput setab 0)";}
+     M0(){ TPUT  3 3; $e "$(tput setab 1)                Mode graphique                $(tput setab 0)";}
+     M1(){ TPUT  4 3; $e "$(tput setab 11)$(tput setaf 0)               Test du moniteur               $(tput setaf 15)$(tput setab 0)";}
+     M2(){ TPUT  5 3; $e "                Relevé $(tput setab 9) RAM                   $(tput setab 0)";}
+     M3(){ TPUT  6 3; $e "                Relevé $(tput setab 9) CPU                   $(tput setab 0)";}
+     M4(){ TPUT  7 3; $e "                Relevé $(tput setab 9) disque                $(tput setab 0)";}
+     M5(){ TPUT  8 3; $e "                Relevé $(tput setab 9) network               $(tput setab 0)";}
+     M6(){ TPUT  9 3; $e "$(tput setab 9)                 Santé $(tput setab 0) disque                ";}
+     M7(){ TPUT  10 3; $e "$(tput setab 9)                 infos $(tput setab 0) disque                ";}
+     M8(){ TPUT  11 3; $e "$(tput setab 4)$(tput setaf 15)              Info carte graphique            $(tput setaf 15)$(tput setab 0)";}
+     M9(){ TPUT  12 3; $e "$(tput setab 15)$(tput setaf 1)               Stress test du CPU             $(tput setab 0)";}
+     M10(){ TPUT  13 3; $e "$(tput setab 17)$(tput setaf 15)          Lancer Phoronix Test Suite          $(tput setaf 15)$(tput setab 0)";}
+     M11(){ TPUT  14 3; $e "$(tput setab 9)                MAJ du système                $(tput setab 0)";}
+     M12(){ TPUT  15 3; $e "$(tput setab 11)$(tput setaf 0)            Ré/Installer les softs            $(tput setaf 15)$(tput setab 0)";}
+     M13(){ TPUT  16 3; $e "$(tput setab 9)              Quitter le script               $(tput setab 0)";}
       LM=13
    MENU(){ for each in $(seq 0 $LM);do M${each};done;}
     POS(){ if [[ $cur == up ]];then ((i--));fi
