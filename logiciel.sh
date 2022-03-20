@@ -31,10 +31,10 @@ printf "\e[8;19;50t"
      M5(){ TPUT  8 3; $e "                Relevé $(tput setab 9) network               $(tput setab 0)";}
      M6(){ TPUT  9 3; $e "$(tput setab 9)                 Santé $(tput setab 0) disque                ";}
      M7(){ TPUT  10 3; $e "$(tput setab 9)                 infos $(tput setab 0) disque                ";}
-     M8(){ TPUT  11 3; $e "$(tput setab 4)$(tput setaf 15)              Info carte graphique            $(tput setaf 15)$(tput setab 0)";}
-     M9(){ TPUT  12 3; $e "$(tput setab 15)$(tput setaf 1)               Stress test du CPU             $(tput setab 0)";}
+     M8(){ TPUT  11 3; $e "$(tput setab 4)$(tput setaf 15)             Info carte graphique             $(tput setaf 15)$(tput setab 0)";}
+     M9(){ TPUT  12 3; $e "$(tput setab 15)$(tput setaf 1)              Stress test du CPU              $(tput setab 0)";}
      M10(){ TPUT  13 3; $e "$(tput setab 17)$(tput setaf 15)          Lancer Phoronix Test Suite          $(tput setaf 15)$(tput setab 0)";}
-     M11(){ TPUT  14 3; $e "$(tput setab 9)                MAJ du système                $(tput setab 0)";}
+     M11(){ TPUT  14 3; $e "$(tput setab 9)$(tput setaf 15)               MAJ du système                 $(tput setaf 15)$(tput setab 0)";}
      M12(){ TPUT  15 3; $e "$(tput setab 11)$(tput setaf 0)            Ré/Installer les softs            $(tput setaf 15)$(tput setab 0)";}
      M13(){ TPUT  16 3; $e "$(tput setab 9)              Quitter le script               $(tput setab 0)";}
       LM=13
