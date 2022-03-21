@@ -67,8 +67,8 @@ REFRESH(){ after=$((i+1)); before=$((i-1))
         8) S=M8;SC;if [[ $cur == "" ]];then R;$e "\n$(sudo smartctl -i /dev/sdb)\n";ES;fi;;
         9) S=M9;SC;if [[ $cur == "" ]];then R;$e "\n$(sudo inxi -G)\n";ES;fi;;
         10) S=M10;SC;if [[ $cur == "" ]];then R;$e "\n$(cd / && cd ~/Maintenance && gnome-terminal -e  "sudo s-tui")\n";ES;fi;;
-        11) S=M11;SC;if [[ $cur == "" ]];then R;$e "\n$(cd / && cd /usr/share/applications/ && gtk-launch phoronix-test-suite.desktop)\n";ES;fi;;
-        12) S=M12;SC;if [[ $cur == "" ]];then R;$e "\n$(cd / && cd ~/Maintenance && gnome-terminal -e  "./preinstall.sh")\n";ES;fi;; 
+        11) S=M11;SC;if [[ $cur == "" ]];then R;$e "\n$(cd / && cd ~/Maintenance && gnome-terminal -e  "./preinstall.sh")\n";ES;fi;;
+        12) S=M12;SC;if [[ $cur == "" ]];then R;$e "\n$(cd / && cd /usr/share/applications/ && gtk-launch phoronix-test-suite.desktop)\n";ES;fi;; 
         13) S=M13;SC;if [[ $cur == "" ]];then R;$e "\n$(gnome-terminal -e  "sudo nmon")\n";ES;fi;;
         14) S=M14;SC;if [[ $cur == "" ]];then R;$e "\n$(gnome-terminal -e  "sudo iptraf-ng")\n";ES;fi;;   
         15) S=M15;SC;if [[ $cur == "" ]];then R;$e "\n$(cd / && cd ~/Maintenance && gnome-terminal -e  "./maj.sh")\n";ES;fi;;   
