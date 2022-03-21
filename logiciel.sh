@@ -1,6 +1,6 @@
 #!/bin/bash
 
-printf "\e[8;20;50t" 
+printf "\e[8;22;50t" 
       E='echo -e';e='echo -en';trap "R;exit" 2
     ESC=$( $e "\e")
    TPUT(){ $e "\e[${1};${2}H";}
@@ -12,13 +12,13 @@ printf "\e[8;20;50t"
  UNMARK(){ $e "\e[27m";}
       R(){ CLEAR ;stty sane;$e "\ec\e[13;18m\e[J";};
    HEAD(){ DRAW
-           for each in $(seq 1 18);do
+           for each in $(seq 1 20);do
            $E "x                                                x"
            done
            WRITE;MARK;TPUT 1 1
            $E "                  MENU DU SCRIPT                  ";UNMARK;}
            i=0; CLEAR; CIVIS;NULL=/dev/null
-   FOOT(){ MARK;TPUT 19 1
+   FOOT(){ MARK;TPUT 21 1
            printf "               CREE PAR LA CAPSULE          💦    ";UNMARK;}
   ARROW(){ read -s -n3 key 2>/dev/null >&2
            if [[ $key = $ESC[A ]];then echo up;fi
@@ -32,13 +32,15 @@ printf "\e[8;20;50t"
      M6(){ TPUT  9 3; $e "                Relevé $(tput setab 9) network               $(tput setab 0)";}
      M7(){ TPUT  10 3; $e "$(tput setab 9)                 Santé $(tput setab 0) disque                ";}
      M8(){ TPUT  11 3; $e "$(tput setab 9)                 infos $(tput setab 0) disque                ";}
-     M9(){ TPUT  12 3; $e "$(tput setab 4)$(tput setaf 15)             Info carte graphique             $(tput setaf 15)$(tput setab 0)";}
-     M10(){ TPUT  13 3; $e "$(tput setab 15)$(tput setaf 1)              Stress test du CPU              $(tput setab 0)";}
-     M11(){ TPUT  14 3; $e "$(tput setab 17)$(tput setaf 15)          Lancer Phoronix Test Suite          $(tput setaf 15)$(tput setab 0)";}
-     M12(){ TPUT  15 3; $e "$(tput setab 9)$(tput setaf 15)               MAJ du système                 $(tput setaf 15)$(tput setab 0)";}
-     M13(){ TPUT  16 3; $e "$(tput setab 11)$(tput setaf 0)            Ré/Installer les softs            $(tput setaf 15)$(tput setab 0)";}
-     M14(){ TPUT  17 3; $e "$(tput setab 9)              Quitter le script               $(tput setab 0)";}
-      LM=14
+     M9(){ TPUT  12 3; $e "$(tput setab 9)$(tput setaf 15)             Info carte graphique             $(tput setaf 15)$(tput setab 0)";}
+     M10(){ TPUT  13 3; $e "$(tput setab 1)$(tput setaf 15)              Stress test du CPU              $(tput setab 0)";}
+     M11(){ TPUT  14 3; $e "$(tput setab 11)$(tput setaf 0)            Ré/Installer les softs            $(tput setaf 15)$(tput setab 0)";}
+     M12(){ TPUT  15 3; $e "$(tput setab 17)$(tput setaf 15)          Lancer Phoronix Test Suite          $(tput setaf 15)$(tput setab 0)";}
+     M13(){ TPUT  16 3; $e "$(tput setab 19)$(tput setaf 15)             !Monitoring complet              $(tput setaf 15)$(tput setab 0)";}
+     M14(){ TPUT  17 3; $e "$(tput setab 26)$(tput setaf 15)             !Monitoring network              $(tput setaf 15)$(tput setab 0)";}
+     M15(){ TPUT  18 3; $e "$(tput setab 33)$(tput setaf 15)                MAJ du système                $(tput setaf 15)$(tput setab 0)";}
+     M16(){ TPUT  19 3; $e "$(tput setab 1)                   Quitter                    $(tput setab 0)";}
+      LM=16
    MENU(){ for each in $(seq 0 $LM);do M${each};done;}
     POS(){ if [[ $cur == up ]];then ((i--));fi
            if [[ $cur == dn ]];then ((i++));fi
@@ -66,8 +68,10 @@ REFRESH(){ after=$((i+1)); before=$((i-1))
         9) S=M9;SC;if [[ $cur == "" ]];then R;$e "\n$(sudo inxi -G)\n";ES;fi;;
         10) S=M10;SC;if [[ $cur == "" ]];then R;$e "\n$(cd / && cd ~/Maintenance && gnome-terminal -e  "sudo s-tui")\n";ES;fi;;
         11) S=M11;SC;if [[ $cur == "" ]];then R;$e "\n$(cd / && cd /usr/share/applications/ && gtk-launch phoronix-test-suite.desktop)\n";ES;fi;;
-        12) S=M12;SC;if [[ $cur == "" ]];then R;$e "\n$(cd / && cd ~/Maintenance && gnome-terminal -e  "./maj.sh")\n";ES;fi;; 
-        13) S=M13;SC;if [[ $cur == "" ]];then R;$e "\n$(cd / && cd ~/Maintenance && gnome-terminal -e  "./preinstall.sh")\n";ES;fi;;   
-        14) S=M14;SC;if [[ $cur == "" ]];then R;exit 0;fi;;
+        12) S=M12;SC;if [[ $cur == "" ]];then R;$e "\n$(cd / && cd ~/Maintenance && gnome-terminal -e  "./preinstall.sh")\n";ES;fi;; 
+        13) S=M13;SC;if [[ $cur == "" ]];then R;$e "\n$(gnome-terminal -e  "sudo nmon")\n";ES;fi;;
+        14) S=M14;SC;if [[ $cur == "" ]];then R;$e "\n$(gnome-terminal -e  "sudo iptraf-ng")\n";ES;fi;;   
+        15) S=M15;SC;if [[ $cur == "" ]];then R;$e "\n$(cd / && cd ~/Maintenance && gnome-terminal -e  "./maj.sh")\n";ES;fi;;   
+        16) S=M16;SC;if [[ $cur == "" ]];then R;exit 0;fi;;
  esac;POS;done
 
