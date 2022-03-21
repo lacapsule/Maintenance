@@ -131,6 +131,17 @@ echo "                      ✅ OK ✅" &&
 sleep 0.5 &&
 
 echo ""
+echo "             $(tput setaf 0)$(tput setab 9) Installation de Screentest $(tput sgr0)" &&
+echo ""
+sleep 1 &&
+
+sudo apt install screentest -y
+
+echo ""
+echo "                      ✅ OK ✅" &&
+sleep 0.5 &&
+
+echo ""
 echo "               $(tput setaf 0)$(tput setab 9) Installation de Gzip $(tput sgr0)" &&
 echo ""
 sleep 1 &&
@@ -179,7 +190,7 @@ echo "             $(tput setaf 0)$(tput setab 9) Installation de Phoronix $(tpu
 echo ""
 sleep 1 &&
 
-cd ~/maintenance/ &&
+cd ~/Maintenance/ &&
 sudo ./phoronix.sh -y
 
 echo ""
